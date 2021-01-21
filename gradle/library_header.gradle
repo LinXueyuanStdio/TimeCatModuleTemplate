@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -11,6 +14,17 @@ android {
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "moduleName"     : project.getName(),
+                        "HOST"           : project.getName().replace("-", ""),
+                        "RouterDocFolder": "${project.rootDir}/RouterDocument".toString(),
+                        "RouterDocEnable": String.valueOf("true")
+                ]
+            }
+        }
     }
 
     buildTypes {
@@ -41,4 +55,14 @@ android {
     dexOptions {
         jumboMode = true
     }
+
+    useLibrary 'org.apache.http.legacy'
+}
+
+
+dependencies {
+    kapt rootProject.ext.dependencies["dagger2-compiler"]
+    kapt rootProject.ext.dependencies["router-compiler"]
+
+    api rootProject.ext.dependencies["kotlin-stdlib"]
 }

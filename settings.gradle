@@ -1,8 +1,7 @@
 include ':app'
-//TODO include ':template'
-//TODO include ':template:template'
+include ':module-git'
 
-rootProject.name = "TimeCatRepoTemplate"
+rootProject.name = "TimeCatModuleTemplate"
 
 // 引入composing的设置
 apply from: "gradle/composingConfig.gradle"

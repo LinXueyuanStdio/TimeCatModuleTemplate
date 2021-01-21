@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.xiaojinzi.component.plugin'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 //region 签名
 def keystorePSW = ''
@@ -54,12 +57,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
-//    TODO 为你的库写一个演示 demo
-//    implementation project(':template')
-//    implementation project(':template:template')
+    api project(':module-git')
 }
