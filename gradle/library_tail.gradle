@@ -1,1 +1,1 @@
-apply from: "${gradle.ext.localGradleDir}/module/footer.gradle"
+apply from: "${gradle.ext.localGradleDir}/library/footer.gradle"

@@ -1,4 +1,4 @@
-apply from: "${project.rootDir}/gradle/library_header.gradle"
+apply from: "${project.rootDir}/gradle/module_header.gradle"
 
 android {
     resourcePrefix "git_" //给 Module 内的资源名增加前缀, 避免资源名冲突
@@ -21,4 +21,4 @@ dependencies {
     api rootProject.ext.timecat["middle-block"]
 }
 
-apply from: "${project.rootDir}/gradle/library_tail.gradle"
+apply from: "${project.rootDir}/gradle/module_tail.gradle"
