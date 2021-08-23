@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import com.timecat.identity.readonly.RouterHub
 import com.xiaojinzi.component.impl.*
 
 class MainActivity : Activity() {
@@ -16,10 +15,9 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         val linearLayout = LinearLayout(this)
         linearLayout.orientation = LinearLayout.VERTICAL
-        linearLayout.addView(createButton("登录", RouterHub.LOGIN_LoginActivity))
-        linearLayout.addView(createButton("添加插件", RouterHub.USER_AddPluginAppActivity))
-        linearLayout.addView(createButton("添加动态", RouterHub.USER_AddMomentActivity))
-        linearLayout.addView(createButton("背包", RouterHub.USER_BagActivity))
+        linearLayout.addView(createButton("登录") {
+
+        })
         setContentView(linearLayout)
     }
 
@@ -38,7 +36,10 @@ class MainActivity : Activity() {
     private fun createButton(name: String): Button {
         val button = Button(this)
         button.text = name
-        val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         button.layoutParams = layoutParams
         button.gravity = Gravity.CENTER
         return button
@@ -48,7 +49,12 @@ class MainActivity : Activity() {
         Router.with().hostAndPath(path)
             .forward(object : Callback {
                 override fun onSuccess(result: RouterResult) {}
-                override fun onEvent(successResult: RouterResult?, errorResult: RouterErrorResult?) {}
+                override fun onEvent(
+                    successResult: RouterResult?,
+                    errorResult: RouterErrorResult?
+                ) {
+                }
+
                 override fun onCancel(originalRequest: RouterRequest?) {}
                 override fun onError(errorResult: RouterErrorResult) {
                     Log.e("ui", errorResult.error.toString())

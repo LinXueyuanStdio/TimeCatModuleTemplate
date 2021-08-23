@@ -1,1 +1,0 @@
-[{"host":"git","path":"/RepoListActivity","desc":"","targetActivity":"com.timecat.module.git.repolist.RepoListActivity","targetActivityName":"RepoListActivity"},{"host":"git","path":"/RepoDetailActivity","desc":"","targetActivity":"com.timecat.module.git.sgit.activities.RepoDetailActivity","targetActivityName":"RepoDetailActivity"}]
